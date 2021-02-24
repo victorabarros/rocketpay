@@ -13,3 +13,6 @@ run-postgres:
 	@docker run --name postgres -p 5432:5432 \
 		-e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres \
 		-d postgres:13.2
+
+ip:
+	@docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${APP_NAME}
