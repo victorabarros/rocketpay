@@ -10,6 +10,7 @@ https://elixir-lang.org/
 
 - `make run-postgres` to get up a database
 - `make debug` to create a container with elixir
+- `docker exec -it rocketpay`
 - `mix archive.install hex phx_new 1.5.7` to install phoenix web framework
 - `mix phx.new rocketpay --no-webpack --no-html` to initialize a phx project
 
@@ -70,9 +71,55 @@ iex(12)> Fun.sum_from_file("numbers")
 {:ok, %{result: 37}}
 ```
 
-### Tests
+### Testing
 
 `mix test`
+
+## Class 2
+
+Ecto it's the framework to deal with databases
+
+- `mix ecto.create` initialize
+- `mix ecto.gen.migration create_user_table` and write the migration on `./priv/repo/migrations/[DATETIME]_create_user_table.exs`
+- `mix ecto.migrate` to run migration
+- `mix ecto.drop` drop database
+
+```bash
+iex(1)> alias Rocketpay.User
+Rocketpay.User
+iex(2)> User.changeset(%{name: "vtr", password: "123456", email: "v@a", nickname: "v", age: 23})
+#Ecto.Changeset<
+  action: nil,
+  changes: %{
+    age: 23,
+    email: "v@a",
+    name: "vtr",
+    nickname: "v",
+    password: "123456",
+    password_hash: "$2b$12$Zm5Iiy3lauYv1/DUI4tRN.dni8ucWN7wnQZI4PjiummUOkVSDj4BK"
+  },
+  errors: [],
+  data: #Rocketpay.User<>,
+  valid?: true
+iex(3)> recompile
+iex(4)> Rocketpay.create_user(%{name: "vtr", age: 23, email: "vf@re.com", password: "159487", nickname: "fdse"})
+[debug] QUERY OK db=1.5ms decode=0.8ms queue=0.4ms idle=1069.2ms
+INSERT INTO "users" ("age","email","name","nickname","password_hash","inserted_at","updated_at","id") VALUES ($1,$2,$3,$4,$5,$6,$7,$8) [23, "vf@re.com", "vtr", "fdse", "$2b$12$u2fsYMjVhr.uuyk/s3A6rusmUdAhW6soC.yyOfyY8XaIxbKdLWrFm", ~N[2021-02-25 03:19:07], ~N[2021-02-25 03:19:07], <<224, 134, 116, 120, 21, 57, 64, 214, 172, 147, 200, 77, 224, 189, 163, 107>>]
+{:ok,
+ %Rocketpay.User{
+   __meta__: #Ecto.Schema.Metadata<:loaded, "users">,
+   age: 23,
+   email: "vf@re.com",
+   id: "e0867478-1539-40d6-ac93-c84de0bda36b",
+   inserted_at: ~N[2021-02-25 03:19:07],
+   name: "vtr",
+   nickname: "fdse",
+   password: "159487",
+   password_hash: "$2b$12$u2fsYMjVhr.uuyk/s3A6rusmUdAhW6soC.yyOfyY8XaIxbKdLWrFm",
+   updated_at: ~N[2021-02-25 03:19:07]
+ }}
+iex(5)>
+```
 
 ## TODO
 
