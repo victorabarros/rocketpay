@@ -6,6 +6,8 @@ https://elixir-lang.org/
 
 ## Class 1
 
+### Setuping
+
 - `make run-postgres` to get up a database
 - `make debug` to create a container with elixir
 - `mix archive.install hex phx_new 1.5.7` to install phoenix web framework
@@ -18,14 +20,15 @@ Now `/rocketpay` folder it's the work directory
 - add `{:credo, "~> 1.5", only: [:dev, :test], runtime: false}` to `./mix.exs` on dep section
 - `mix deps.get` to dowload dependencies and then `mix credo gen.config` to build credo config
 
-Run server
+### Developing server
 
 - `mix phx.server` and access `http://172.17.0.4:4000/dashboard/home` and monitorring
+- Phx setup contexts
+  - `./lib/<APP_NAME>/` code the business rules, connection with db, ...
+  - `./lib/<APP_NAME>_web/` code the web view, controller, routers, ...
+- `http://172.17.0.4:4000/api/:filename` to sum the content of the file
 
-Phx setup contexts
-
-- `./lib/<APP_NAME>/` code the business rules, connection with db, ...
-- `./lib/<APP_NAME>_web/` code the web view, controller, routers, ...
+### Interative
 
 - `iex -S mix` interative elixir with root project availables to import
   - `recompile` to refresh project
@@ -66,6 +69,10 @@ Rocketpay.Numbers
 iex(12)> Fun.sum_from_file("numbers")
 {:ok, %{result: 37}}
 ```
+
+### Tests
+
+`mix test`
 
 ## TODO
 

@@ -9,7 +9,7 @@ defmodule Rocketpay.Numbers do
     result =
       result
       |> String.split(",")
-      |> Enum.map(fn ii -> String.to_integer(ii) end)
+      |> Stream.map(fn ii -> String.to_integer(ii) end)
       |> Enum.sum()
 
       {:ok, %{result: result}}
