@@ -10,7 +10,7 @@ https://elixir-lang.org/
 
 - `make run-postgres` to get up a database
 - `make debug` to create a container with elixir
-- `docker exec -it rocketpay`
+- `docker exec -it rocketpay` | now `make debug` works too
 - `mix archive.install hex phx_new 1.5.7` to install phoenix web framework
 - `mix phx.new rocketpay --no-webpack --no-html` to initialize a phx project
 
@@ -23,11 +23,11 @@ Now `/rocketpay` folder it's the work directory
 
 ### Developing server
 
-- `mix phx.server` and access `http://172.17.0.4:4000/dashboard/home` and monitorring
+- `mix phx.server` and access `http://localhost:4000/dashboard/home` and monitorring
 - Phx setup contexts
   - `./lib/<APP_NAME>/` code the business rules, connection with db, ...
   - `./lib/<APP_NAME>_web/` code the web view, controller, routers, ...
-- `http://172.17.0.4:4000/api/:filename` to sum the content of the file
+- `http://localhost:4000/api/:filename` to sum the content of the file
 
 ### Interative
 
@@ -120,6 +120,12 @@ INSERT INTO "users" ("age","email","name","nickname","password_hash","inserted_a
  }}
 iex(5)>
 ```
+
+## Class 3
+
+- Rocketpay.Repo it's the layer that connect with DB
+- To see docs, on interactive mode run `h Rocketpay.Repo.all`, or access `https://hexdocs.pm/ecto/Ecto.Repo.html`
+  - Ex: `Rocketpay.Repo.all(Rocketpay.User)`
 
 ## TODO
 
