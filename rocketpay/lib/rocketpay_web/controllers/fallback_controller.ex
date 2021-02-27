@@ -1,7 +1,8 @@
 defmodule RocketpayWeb.FallbackController do
   use RocketpayWeb, :controller
 
-  def call(conn, %{error: result}) do
+  def call(conn, {:error, result}) do
+    IO.puts("Fallback trigged")
     conn
     |> put_status(:bad_request)
     |> put_view(RocketpayWeb.ErrorView)
