@@ -126,6 +126,10 @@ iex(5)>
 - Rocketpay.Repo it's the layer that connect with DB
 - To see docs, on interactive mode run `h Rocketpay.Repo.all`, or access `https://hexdocs.pm/ecto/Ecto.Repo.html`
   - Ex: `Rocketpay.Repo.all(Rocketpay.User)`
+- `mix ecto.gen.migration create_accounts_table` write `./priv/repo/migrations/20210227174124_create_accounts_table.exs` and `mix ecto.migrate`
+  - `params = %{user_id: "0d1e5e8e-77e0-4dba-87ae-0e26862ec820", balance: "0.00"}`
+  - `params |> Rocketpay.Account.changeset()`
+  - `params |> Rocketpay.Account.changeset() |> Rocketpay.Repo.insert()`
 
 ## TODO
 

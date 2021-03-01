@@ -19,10 +19,6 @@ defmodule Rocketpay.Account do
     %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> check_contraint(:accounts, name: :balance_cant_be_negative)
-  end
-
-  defp put_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
-    change(changeset, Bcrypt.add_hash(password))
+    |> check_constraint(:accounts, name: :balance_cant_be_negative)
   end
 end
