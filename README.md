@@ -1,6 +1,7 @@
 # rocketpay
 
 NLW#4 RocketSeat
+https://github.com/rocketseat-education/nlw-04-elixir
 https://nextlevelweek.com/episodios/elixir/1/edicao/4
 https://elixir-lang.org/
 
